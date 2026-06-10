@@ -25,26 +25,28 @@ def add_item(inventory_list):
     name_input = input("Nhập tên hàng hóa: ")
     while True:
 
-        if id_input == "":
+        if name_input == "":
             name_input = input("Tên hàng hóa không được để trống! Nhập lại: ")
         else:
             break
 
     quantity_input = input("Nhập số lượng tồn kho: ")
     while True:
-        if not quantity_input.isdigit():
-            quantity_input = input("Số lượng hàng hóa phải là chữ số! Nhập lại: ")   
+            if not quantity_input.isdigit():
+                quantity_input = input("Số lượng hàng hóa phải là chữ số! Nhập lại: ")   
 
-        elif id_input < 0:
-            quantity_input = input("Số lượng hàng hóa không hợp lệ! Nhập lại: ")
+            else: 
+                quantity_input = int(quantity_input)
+                if id_input < 0:
+                    quantity_input = input("Số lượng hàng hóa không hợp lệ! Nhập lại: ")
 
-        else:
-            break   
+                else:
+                    break 
 
     inventory_list.append({
-        'id': id_input, 
-        'name': name_input, 
-        'quantity': quantity_input
+            'id': id_input, 
+            'name': name_input, 
+            'quantity': quantity_input
     })
 
     print("Thêm hàng hóa thành công!")  
@@ -57,15 +59,17 @@ def update_quantity(inventory_list):
             print(f"Tìm thấy hàng hóa: {inventory_list[i]['name']} (số lượng hiện tại: {inventory_list[i]['quantity']})")
             quantity_input = input("Nhập số lượng mới: ")
             while True:
-                if not quantity_input.isdigit():
-                    quantity_input = input("Số lượng hàng hóa phải là chữ số! Nhập lại: ")   
+                    if not quantity_input.isdigit():
+                        quantity_input = input("Số lượng hàng hóa phải là chữ số! Nhập lại: ")   
 
-                elif id_input < 0:
-                    quantity_input = input("Số lượng hàng hóa không hợp lệ! Nhập lại: ")
+                    else: 
+                        quantity_input = int(quantity_input)
+                        if id_input < 0:
+                            quantity_input = input("Số lượng hàng hóa không hợp lệ! Nhập lại: ")
 
-                else:
-                    inventory_list[i]['quantity'] = quantity_input
-                    break 
+                        else:
+                            inventory_list[i]['quantity'] = quantity_input
+                            break 
 
             print("Cập nhật số lượng thành công!")  
             break
